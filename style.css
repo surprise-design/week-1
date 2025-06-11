@@ -1,0 +1,61 @@
+h1{
+    color: #2296C7;
+    font-size: 40px;
+    font-family: Helvetica, sans-serif;
+    text-align: center;
+}    
+    
+h2{
+    color: green;
+    font-family: Helvetica, sans-serif;
+    text-align: right;
+}   
+    
+h3{
+    font-family: Comic Sans,Comic Sans MS, cursive;
+}   
+    
+p{   
+    font-weight: 500;
+    text-decoration:green
+}
+
+table{
+    font-family: Helvetica, sans-serif;
+    border-collapse: collapse;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #2695A6;
+}
+
+
+
+th{
+    font-weight: 800;
+    background-color: #2695A6;
+    color: #ffffff;
+}
+
+tr.alt td{
+    background-color: #9AEFFC;
+}
+
+ul{
+    list-style-image:url('images/pointer-icon.png');
+}
+
+ol{
+    list-style-type: upper-roman;
+} 
+
+#menu-bar a{
+    font-family: helvetica, sans-serif;
+    text-decoration: none;
+    background-color: aquamarine;
+    padding: 5px;
+}
+
+#menu-bar a:hover{
+    background-color: aqua;
+    color: #ffffff;
+}
