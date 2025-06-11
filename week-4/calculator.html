@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div id="calculator">
+        <input type="text" id="inputBox" readonly value="0">
+        <table border="1">
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed(7)">7</td>
+                <td class="digitButton" onclick="digitBtnPressed(8)">8</td>
+                <td class="digitButton" onclick="digitBtnPressed(9)">9</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('/')">÷</td>
+            </tr>
+
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed(4)">4</td>
+                <td class="digitButton" onclick="digitBtnPressed(5)">5</td>
+                <td class="digitButton" onclick="digitBtnPressed(6)">6</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('*')">×</td>
+            </tr>
+
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed(1)">1</td>
+                <td class="digitButton" onclick="digitBtnPressed(2)">2</td>
+                <td class="digitButton" onclick="digitBtnPressed(3)">3</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('-')">−</td>
+            </tr>
+
+            <tr>
+                <td class="digitButton" onclick="digitBtnPressed(0)">0</td>
+                <td class="clearButton" onclick="clearInput()">AC</td>
+                <td class="operatorButton" onclick="digitBtnPressed()">%</td>
+                <td class="operatorButton" onclick="operatorBtnPressed('+')">+</td>
+            </tr>
+
+            <tr>
+                <td class="operatorButton" onclick="powerOfTwo()">x²</td>
+                <td class="operatorButton" onclick="powerOfThree()">x³</td>
+                <td class="operatorButton" onclick="squareRoot()">√</td>
+                <td class="operatorButton" onclick="calculateResult()">=</td>
+            </tr>
+        </table>
+        </div>
+
+   <script>
+        let inputBox = document.getElementById('inputBox');
+        let value1 = '';
+        let currentOperator = null;
+
+  function digitBtnPressed(digit) {
+    if (inputBox.value === '0') {
+      inputBox.value = digit;
+    } else {
+      inputBox.value += digit;
+    }
+  }
+
+  function operatorBtnPressed(op) {
+    if (inputBox.value !== '') {
+      value1 = parseFloat(inputBox.value);
+      currentOperator = op;
+      inputBox.value = '';
+    } else {
+      inputBox.value = 'Error';
+    }
+  }
+
+  function calculateResult() {
+    if (currentOperator === null || inputBox.value === '') {
+      return;
+    }
+
+    let value2 = parseFloat(inputBox.value);
+    let result = 0;
+
+    switch (currentOperator) {
+      case '+':
+        result = value1 + value2;
+        break;
+      case '-':
+        result = value1 - value2;
+        break;
+      case '*':
+        result = value1 * value2;
+        break;
+      case '/':
+        result = value2 === 0 ? 'Error' : value1 / value2;
+        break;
+      default:
+        result = value2;
+        break;
+    }
+
+    inputBox.value = result;
+    value1 = result;
+    currentOperator = null;
+  }
+
+  function clearInput() {
+    inputBox.value = '0';
+    value1 = '';
+    currentOperator = null;
+  }
+
+  function squareRoot() {
+    let val = parseFloat(inputBox.value);
+    inputBox.value = Math.sqrt(val);
+  }
+
+  function powerOfTwo() {
+    let val = parseFloat(inputBox.value);
+    inputBox.value = val * val;
+  }
+
+  function powerOfThree() {
+    let val = parseFloat(inputBox.value);
+    inputBox.value = val * val * val;
+  }
+</script>
+</body>
+</html>
